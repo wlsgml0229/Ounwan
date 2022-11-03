@@ -55,6 +55,7 @@ const ounwanAxios = {
    * @returns {Promise<AxiosResponse<any>>}
    */
   post(resource, args) {
+    console.log(resource, args);
     return axios.post(`${resource}`, args);
   },
   /**
