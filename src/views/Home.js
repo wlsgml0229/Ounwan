@@ -1,5 +1,5 @@
 const Home = () => {
-  return <div>home</div>;
+  return <div>방을 나열</div>;
 };
 
 export default Home;
