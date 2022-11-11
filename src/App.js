@@ -5,6 +5,7 @@ import KakaoLogin from "./views/KaKaoLogin";
 import Home from "./views/Home";
 import PrivateRoute from "./views/PrivateRoute";
 import NotFound from "./views/NotFound";
+import Navbar from "./views/Navbar";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Navbar />
       </BrowserRouter>
     </div>
   );
