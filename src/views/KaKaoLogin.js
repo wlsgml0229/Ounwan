@@ -21,11 +21,12 @@ const KakaoLogin = () => {
         console.log("tokenSuccess", res);
         if (res.data.response) {
           token.set("user_token", res.data.response.data);
-          navigate("/home");
+          navigate("/");
         }
       })
       .catch((err) => {
-        alert(err);
+        console.log(err);
+        navigate("/");
       });
   }, []);
 
