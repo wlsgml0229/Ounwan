@@ -3,7 +3,7 @@ import Login from "./views/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import KakaoLogin from "./views/KaKaoLogin";
 import Home from "./views/Home";
-import PrivateRoute from "./views/PrivateRoute";
+// import PrivateRoute from "./views/PrivateRoute";
 import NotFound from "./views/NotFound";
 import Navbar from "./views/Navbar";
 
@@ -12,16 +12,20 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/login" element={<Login />} />
+          {/* 
           <Route
             index
             path="/"
             element={
               <PrivateRoute>
+                <Route element={<Navbar />}></Route>
                 <Home />
               </PrivateRoute>
             }
-          />
-          <Route path="/login" element={<Login />} />
+          /> */}
+
+          <Route element={<Home />} path="/" />
           <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
