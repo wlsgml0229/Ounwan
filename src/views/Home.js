@@ -2,6 +2,7 @@
 import "../scss/home.scss";
 import { useEffect, useState } from "react";
 import Room from "./components/Room";
+import PlusBtn from "./components/PlusBtn";
 
 const Home = () => {
   const [roomList, setRoomList] = useState([]);
