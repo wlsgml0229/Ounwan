@@ -1,9 +1,14 @@
-import roomImg from "../../images/logo.png";
+import { useNavigate } from "react-router-dom";
+// import roomImg from "../../images/logo.png";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 
-const Room = ({ title, content, userNum }) => {
+const Room = ({ id, title, content, userNum }) => {
+  const navigate = useNavigate();
+  const moveRoomDetail = () => {
+    navigate(`/roomDetail/${id}`);
+  };
   return (
-    <div className="room">
+    <div className="room" onClick={moveRoomDetail}>
       {/* <img src={roomImg} alt="방 메인이미지" /> */}
       <div className="room-text-wrap">
         <h2>{title}</h2>

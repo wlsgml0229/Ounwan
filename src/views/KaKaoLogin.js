@@ -10,13 +10,10 @@ const KakaoLogin = () => {
   const KAKAO_CODE = location.search.split("=")[1];
   console.log("kakao_code", KAKAO_CODE);
 
-  let param = {
-    code: KAKAO_CODE,
-  };
   useEffect(() => {
     // 백엔드로 인가코드보내기
     axios
-      .post("/user/kakao/login", param)
+      .post(`/user/kakao/login?code=${KAKAO_CODE}`)
       .then((res) => {
         console.log("tokenSuccess", res);
         if (res.data.response) {

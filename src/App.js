@@ -6,6 +6,7 @@ import Home from "./views/Home";
 // import PrivateRoute from "./views/PrivateRoute";
 import NotFound from "./views/NotFound";
 import Navbar from "./views/Navbar";
+import RoomDetail from "./views/room/RoomDetail";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           /> */}
 
           <Route element={<Home />} path="/" />
+          <Route element={<RoomDetail />} path="/roomDetail/:id" />
           <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
