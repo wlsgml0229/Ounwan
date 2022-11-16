@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-
+          <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route
             index
             element={
@@ -24,10 +24,8 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Navbar />
       </BrowserRouter>
     </div>
   );
