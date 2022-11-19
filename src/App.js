@@ -7,23 +7,19 @@ import PrivateRoute from "./views/PrivateRoute";
 import NotFound from "./views/NotFound";
 import Navbar from "./views/Navbar";
 import RoomDetail from "./views/room/RoomDetail";
+import { token } from "./utils/token";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        {token.access && <Navbar />}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/kakaoLogin" element={<KakaoLogin />} />
-          <Route
-            index
-            element={
-              <PrivateRoute>
-                <Route element={<Navbar />}></Route>
-                <Route element={<Home />} path="/" />
-                <Route element={<RoomDetail />} path="/roomDetail/:id" />
-              </PrivateRoute>
-            }
-          />
+          <Route element={<PrivateRoute />}>
+            <Route element={<Home />} path="/" />
+            <Route element={<RoomDetail />} path="/roomDetail/:id" />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

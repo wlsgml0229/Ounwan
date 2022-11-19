@@ -1,14 +1,9 @@
 import { token } from "../utils/token";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-export const PrivateRoute = ({ children }) => {
+export const PrivateRoute = () => {
   const auth = token.access();
-  console.log("auth", token.access);
-  if (!auth) {
-    // user is not authenticated
-    return <Navigate to="/login" />;
-  }
-  return children;
+  return auth ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

@@ -15,15 +15,14 @@ const KakaoLogin = () => {
     axios
       .post(`/user/kakao/login?code=${KAKAO_CODE}`)
       .then((res) => {
-        console.log("tokenSuccess", res);
-        if (res.data.response) {
-          token.set("user_token", res.data.response.data);
+        console.log("tokenSuccess", res.data.data.accessToken);
+        if (res.data.data) {
+          token.set("user_token", res.data.data.accessToken);
           navigate("/");
         }
       })
       .catch((err) => {
         console.log(err);
-        navigate("/");
       });
   }, []);
 
