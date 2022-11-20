@@ -1,7 +1,9 @@
+@import "color";
+
 nav {
   position: fixed;
   bottom: 0;
-  // background-color: rgb(125, 198, 247);
+  background-color: $color-dark;
   justify-content: center;
   align-items: center;
   width: 100%;
