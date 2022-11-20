@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import ounwanAxios from "../utils/axiosSetting"
 import { useLocation } from "react-router-dom";
 import { token } from "../utils/token";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,7 @@ const KakaoLogin = () => {
         console.log("tokenSuccess", res.data.data.accessToken);
         if (res.data.data) {
           token.set("user_token", res.data.data.accessToken);
+          ounwanAxios.setHeader()
           navigate("/");
         }
       })
