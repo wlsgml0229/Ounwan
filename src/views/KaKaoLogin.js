@@ -18,7 +18,7 @@ const KakaoLogin = () => {
       .then((res) => {
         console.log("tokenSuccess", res.data.data.accessToken);
         if (res.data.data) {
-          token.set("user_token", res.data.data.accessToken);
+          token.set(res.data.data.accessToken);
           ounwanAxios.setHeader()
           navigate("/");
         }
