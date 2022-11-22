@@ -1,11 +1,14 @@
 import "../../scss/common/plusmodal.scss";
 import { useState } from "react";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 
 const PlusModal = () => {
   const [plusBtn, setPlusBtn] = useState(false);
   const [roomModal, setRoomModal] = useState(false);
   const handleOpen = () => setRoomModal(true);
   const handleClose = () => setRoomModal(false);
+  const onCreateRoom = () => {};
 
   const clickPlusBtn = () => {
     setPlusBtn(!plusBtn);
@@ -26,12 +29,24 @@ const PlusModal = () => {
         </div>
       )}
 
-      {/* {roomModal && (
+      {roomModal && (
         <div className="room-modal">
           <b>🥳 방 만들기</b>
-          <p></p>
+          <TextField
+            fullWidth
+            size="small"
+            id="outlined-basic"
+            label="name"
+            variant="outlined"
+          />
+          <div className="btn-wrap">
+            <Button variant="outlined">닫기</Button>
+            <Button variant="contained" onClick={onCreateRoom}>
+              생성
+            </Button>
+          </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
