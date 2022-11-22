@@ -9,12 +9,13 @@
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 100rem;
-    text-align: center;
-    line-height: 4.5rem;
     font-size: 5rem;
     color: $color-text-dark;
     cursor: pointer;
-    transition: transform .5s;
+    transition: transform 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .plus-btn:hover {
@@ -23,22 +24,38 @@
 
   .plus-modal-wrap {
     position: fixed;
-    top: 0;
-    left: 0;
+    width: 100%;
     height: calc(100vh - 5rem);
-    width: 100vw;
-    background-color: rgba(34, 34, 34, 0.226);
+    left: 0;
+    top: 0;
+    background-color: rgba(21, 18, 18, 0.137);
 
     .plus-modal-content {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      bottom: 1rem;
+      position: fixed;
+      margin-bottom: 12rem;
+      bottom: 2rem;
+      right: 2rem;
       ul {
         li {
-          font-size: 1.4rem;
+          font-size: 1.7rem;
+          font-weight: 600;
+          cursor: pointer;
         }
       }
     }
+  }
+
+  .room-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -45%;
+    margin-top: -20rem;
+    width: 90%;
+    height: 40rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
   }
 }
