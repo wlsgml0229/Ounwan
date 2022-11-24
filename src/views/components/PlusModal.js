@@ -2,6 +2,7 @@ import "../../scss/common/plusmodal.scss";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
+import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
 const PlusModal = () => {
   const [plusBtn, setPlusBtn] = useState(false);
@@ -17,7 +18,7 @@ const PlusModal = () => {
   return (
     <div className="plus-modal">
       <div className="plus-btn" onClick={!roomModal && clickPlusBtn}>
-        +
+        <AddCircleRoundedIcon fontSize="large" />
       </div>
       {plusBtn && (
         <div className="plus-modal-wrap" onClick={clickPlusBtn}>
