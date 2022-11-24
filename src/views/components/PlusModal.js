@@ -3,11 +3,16 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+import { useNavigate } from "react-router-dom";
 
 const PlusModal = () => {
+  const navigate = useNavigate();
   const [plusBtn, setPlusBtn] = useState(false);
   const [roomModal, setRoomModal] = useState(false);
-  const handleOpen = () => setRoomModal(true);
+  const handleOpen = () => {
+    setRoomModal(true);
+    navigate("/room/create");
+  };
   const handleClose = () => setRoomModal(false);
   const onCreateRoom = () => {};
 

@@ -6,30 +6,6 @@ import PlusModal from "./components/PlusModal";
 
 const Home = () => {
   const [roomList, setRoomList] = useState([]);
- 
-  // const roomInfo = [
-  //   {
-  //     id: "1",
-  //     title: "방제목1",
-  //     content: "내용11",
-  //     userNum: "5",
-  //     created_date: new Date().getDate,
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "방제목2",
-  //     content: "내용11",
-  //     userNum: "5",
-  //     created_date: new Date().getDate,
-  //   },
-  //   {
-  //     id: "3",
-  //     title: "방제목3 ",
-  //     content: "내용11",
-  //     userNum: "5",
-  //     created_date: new Date().getDate,
-  //   },
-  // ];
 
   const requestRoomList = async () => {
     await axios.get(`/room/list`).then((res) => {
@@ -44,8 +20,8 @@ const Home = () => {
 
   return (
     <div className="home">
-      {roomList.map((el, idx) => (
-        <Room key={idx} {...el} />
+      {roomList.map((el) => (
+        <Room key={el.roomId} {...el} />
       ))}
       <PlusModal />
     </div>

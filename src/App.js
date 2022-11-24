@@ -6,6 +6,7 @@ import Home from "./views/Home";
 import PrivateRoute from "./views/PrivateRoute";
 import NotFound from "./views/NotFound";
 import Navbar from "./views/Navbar";
+import RoomCreate from "./views/room/RoomCreate";
 import RoomDetail from "./views/room/RoomDetail";
 import { token } from "./utils/token";
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route element={<PrivateRoute />}>
             <Route element={<Home />} path="/" />
+            <Route element={<RoomCreate />} path="/room/create" />
             <Route element={<RoomDetail />} path="/roomDetail/:id" />
           </Route>
           <Route path="*" element={<NotFound />} />

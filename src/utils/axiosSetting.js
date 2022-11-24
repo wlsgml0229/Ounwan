@@ -6,6 +6,7 @@ import { token } from "./token";
  */
 const ounwanAxios = {
   init() {
+    this.setHeader();
     console.log("start init");
     axios.interceptors.response.use(
       (res) => {

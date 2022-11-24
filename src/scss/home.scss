@@ -40,3 +40,28 @@
     }
   }
 }
+
+.room-create {
+  .header-wrap {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    h2 {
+      font-size: 1.3rem;
+      margin-left: 3rem;
+      font-weight: 600;
+    }
+  }
+  .room-create-content {
+    padding: 2rem;
+    .people-number {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .btn-create-wrap {
+    margin-top: 2rem;
+  }
+}
