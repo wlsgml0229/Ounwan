@@ -1,10 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as StompJs from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
+import axios from "axios";
 
 const RoomDetail = () => {
   const client = useRef({});
-  const [timer, setTimer] = useState("00:00:00");
+  const [timer, setTimer] = useState("");
+  const onStartTimer = () => {
+    axios.post("/room/updateTimer").then((res) => {
+      //리스트 업데이트
+      if (res.data.data) {
+        setTimer(res.data.data.startTime);
+      }
+    });
+  };
 
   useEffect(() => {
     connect();
@@ -58,7 +67,7 @@ const RoomDetail = () => {
   return (
     <div>
       <div>
-        상세페이지 방<button>타이머</button>
+        상세페이지 방<button onClick={onStartTimer}>타이머</button>
       </div>
     </div>
   );
