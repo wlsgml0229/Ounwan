@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as StompJs from "@stomp/stompjs";
-import * as SockJS from "sockjs-client";
+
 import axios from "axios";
 
 const RoomDetail = () => {
   const client = useRef({});
   const [timer, setTimer] = useState("");
   const onStartTimer = () => {
-    axios.post("/room/updateTimer").then((res) => {
-      //리스트 업데이트
+    // 회원 id 값 전달
+    axios.post("/room/update/timer").then((res) => {
+      //리스트 업데이트, 멈춘시간이 존재하면 거기서 시작 , 없으면 최초의시간과 현재시간 비교
       if (res.data.data) {
         setTimer(res.data.data.startTime);
       }
@@ -50,7 +51,9 @@ const RoomDetail = () => {
   };
 
   const subscribe = () => {
-    client.current.subscribe(`/sub/chat`, ({ body }) => {});
+    client.current.subscribe(`/sub/chat`, ({ body }) => {
+      // 연결 되어있을때 -> 회원 리스트 받아오면서 타이머
+    });
   };
 
   const publish = (message) => {

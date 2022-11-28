@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 // import roomImg from "../../images/logo.png";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import axios from "axios";
 
 const Room = ({ roomId, roonName, content, userNum }) => {
   const navigate = useNavigate();
   const moveRoomDetail = () => {
-    navigate(`/roomDetail/${roomId}`);
+    axios.post("/room/detail/", roomId).then(() => {
+      console.log("진입성공");
+      navigate(`/roomDetail/${roomId}`);
+    });
   };
   return (
     <div className="room" onClick={moveRoomDetail}>
