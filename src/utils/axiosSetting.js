@@ -14,6 +14,8 @@ const ounwanAxios = {
         return res;
       },
       async (error) => {
+        token.remove();
+        this.setHeader();
         return Promise.reject(error);
       }
     );
