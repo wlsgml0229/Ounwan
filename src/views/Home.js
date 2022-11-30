@@ -8,6 +8,7 @@ const Home = () => {
   const [roomList, setRoomList] = useState([]);
 
   const requestRoomList = async () => {
+    console.log("---");
     await axios.get(`/room/list`).then((res) => {
       setRoomList(res.data.data);
     });

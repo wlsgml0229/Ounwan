@@ -13,14 +13,15 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {token.access && <Navbar />}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route element={<PrivateRoute />}>
-            <Route element={<Home />} path="/" />
-            <Route element={<RoomCreate />} path="/room/create" />
-            <Route element={<RoomDetail />} path="/roomDetail/:id" />
+            <Route element={<Navbar />} path="/">
+              <Route element={<Home />} path="/" />
+              <Route element={<RoomCreate />} path="/room/create" />
+              <Route element={<RoomDetail />} path="/roomDetail/:id" />
+            </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
