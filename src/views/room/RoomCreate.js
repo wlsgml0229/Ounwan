@@ -1,15 +1,19 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 const RoomCreate = () => {
   const navigate = useNavigate();
   const [roomName, setRoomName] = useState("");
+  const [limitNum, setLimitNum] = useState(0);
   const changeRoomName = (e) => {
     setRoomName(e.target.value);
+  };
+  const changeLimitNum = (e) => {
+    setLimitNum(e.target.value);
   };
   const onCreateRoom = () => {
     axios.post("/room/create", { roomName: roomName }).then((res) => {
@@ -22,10 +26,7 @@ const RoomCreate = () => {
   };
   return (
     <div className="room-create">
-      <div className="header-wrap">
-        <ArrowBackIcon className="back-icon" />
-        <h2>방 만들기 </h2>
-      </div>
+      <Header />
       <div className="room-create-content">
         <TextField
           fullWidth

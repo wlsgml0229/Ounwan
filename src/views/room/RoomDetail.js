@@ -17,7 +17,7 @@ const RoomDetail = () => {
   };
 
   useEffect(() => {
-    connect();
+    // connect();
 
     return () => disconnect();
   }, []);
