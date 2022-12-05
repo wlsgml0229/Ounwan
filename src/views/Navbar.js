@@ -1,4 +1,4 @@
-import "../scss/common/nav.scss";
+import "../scss/common/component.scss";
 import HomeIcon from "@mui/icons-material/HomeOutlined";
 import UserCircleIcon from "@mui/icons-material/AccountCircleOutlined";
 import { NavLink, Outlet } from "react-router-dom";

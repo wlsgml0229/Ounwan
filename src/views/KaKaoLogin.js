@@ -16,7 +16,6 @@ const KakaoLogin = () => {
     axios
       .post(`/user/kakao/login?code=${KAKAO_CODE}`)
       .then((res) => {
-        console.log("tokenSuccess", res.data.data.accessToken);
         if (res.data.data) {
           token.set(res.data.data.accessToken);
           ounwanAxios.setHeader();
@@ -24,7 +23,8 @@ const KakaoLogin = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        token.remove();
+        navigate("/login");
       });
   }, []);
 
