@@ -2,23 +2,37 @@ import React, { useEffect, useRef, useState } from "react";
 import * as StompJs from "@stomp/stompjs";
 
 import axios from "axios";
+import Header from "../components/Header";
+import UserTimer from "../components/UserTimer";
+
+import logo from "../../images/logo.png";
 
 const RoomDetail = () => {
   const client = useRef({});
-  const [timer, setTimer] = useState("");
+  const [timer, setTimer] = useState("00:00:00");
+  const [list, setList] = useState([]);
   const onStartTimer = () => {
     // 회원 id 값 전달
-    axios.post("/room/update/timer").then((res) => {
+    axios.post("/timer/start").then((res) => {
       //리스트 업데이트, 멈춘시간이 존재하면 거기서 시작 , 없으면 최초의시간과 현재시간 비교
       if (res.data.data) {
-        setTimer(res.data.data.startTime);
+        console.log(res.data.data);
+        // setTimer(res.data.data.startTime);
       }
     });
   };
 
-  useEffect(() => {
-    // connect();
+  const requestRoomDetail = () => [
+    axios.get("/room/enter").then((res) => {
+      if (res.data.data) {
+        setList(res.data.data.list);
+      }
+    }),
+  ];
 
+  useEffect(() => {
+    requestRoomDetail();
+    connect();
     return () => disconnect();
   }, []);
 
@@ -68,9 +82,19 @@ const RoomDetail = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="room-detail">
+      <Header title={"상세"} />
+      <div className="my-time-wrap">
+        <div className="my-profill">
+          <img src={logo} alt="logo" />
+        </div>
         상세페이지 방<button onClick={onStartTimer}>타이머</button>
+        {timer}
+      </div>
+      <div className="users-time-wrap">
+        {list.map((el) => (
+          <UserTimer key={el.roomId} {...el} />
+        ))}
       </div>
     </div>
   );
