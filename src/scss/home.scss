@@ -55,3 +55,39 @@
     margin-top: 2rem;
   }
 }
+
+.room-detail {
+  .my-time-wrap {
+    box-sizing: border-box;
+    background: rgb(250, 249, 252);
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    img {
+      border-radius: 50%;
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+    .my-time {
+      box-sizing: border-box;
+      margin-top: 1.2rem;
+      font-size: 3rem;
+      font-weight: 600;
+      color: rgb(69, 69, 67);
+      transform: translateX(-2.5rem);
+      display: flex;
+      align-items: center;
+      span {
+        line-height: 4rem;
+      }
+
+      .play-icon {
+        cursor: pointer;
+        font-size: 4rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

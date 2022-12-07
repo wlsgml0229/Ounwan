@@ -3,7 +3,7 @@
 nav {
   position: fixed;
   bottom: 0;
-  background-color: $color-dark;
+  background-color: #fff;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -13,7 +13,7 @@ nav {
   height: 5rem;
   a {
     font-weight: 500;
-    color: rgb(80, 79, 79);
+    color: $color-text-light-dark;
     text-decoration: none;
     outline: none;
     text-align: center;

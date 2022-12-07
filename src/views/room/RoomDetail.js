@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+
 import * as StompJs from "@stomp/stompjs";
 
 import axios from "axios";
@@ -8,10 +11,36 @@ import UserTimer from "../components/UserTimer";
 import logo from "../../images/logo.png";
 
 const RoomDetail = () => {
+  const demo = [
+    {
+      key: "1",
+      userId: "12345678",
+      userNm: "미미미미미",
+      time: "12:22:23",
+      status: false,
+    },
+    {
+      key: "1",
+      userId: "123345678",
+      userNm: "미미미미미",
+      time: "12:22:23",
+      status: false,
+    },
+    {
+      key: "1",
+      userId: "1232145678",
+      userNm: "미미미미미",
+      time: "12:22:23",
+      status: false,
+    },
+  ];
   const client = useRef({});
   const [timer, setTimer] = useState("00:00:00");
+
+  const [play, setPlay] = useState(false);
   const [list, setList] = useState([]);
   const onStartTimer = () => {
+    setPlay(true);
     // 회원 id 값 전달
     axios.post("/timer/start").then((res) => {
       //리스트 업데이트, 멈춘시간이 존재하면 거기서 시작 , 없으면 최초의시간과 현재시간 비교
@@ -22,6 +51,9 @@ const RoomDetail = () => {
     });
   };
 
+  const onStopTimer = () => {
+    setPlay(false);
+  };
   const requestRoomDetail = () => [
     axios.get("/room/enter").then((res) => {
       if (res.data.data) {
@@ -31,7 +63,8 @@ const RoomDetail = () => {
   ];
 
   useEffect(() => {
-    requestRoomDetail();
+    // requestRoomDetail();
+    setList(demo);
     connect();
     return () => disconnect();
   }, []);
@@ -85,16 +118,30 @@ const RoomDetail = () => {
     <div className="room-detail">
       <Header title={"상세"} />
       <div className="my-time-wrap">
-        <div className="my-profill">
-          <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" />
+        <div className="my-time">
+          {!play && (
+            <PlayCircleOutlineIcon
+              className="play-icon"
+              onClick={onStartTimer}
+            />
+          )}
+          {play && (
+            <PauseCircleOutlineIcon
+              className="play-icon"
+              onClick={onStopTimer}
+            />
+          )}
+          <span>{timer}</span>
         </div>
-        상세페이지 방<button onClick={onStartTimer}>타이머</button>
-        {timer}
       </div>
       <div className="users-time-wrap">
-        {list.map((el) => (
-          <UserTimer key={el.roomId} {...el} />
-        ))}
+        {
+          list.map((el) => (
+            <div key={el.userId}>{el.userId}</div>
+          ))
+          // <UserTimer key={el.userId} {...el} />
+        }
       </div>
     </div>
   );
