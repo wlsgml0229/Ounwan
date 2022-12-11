@@ -13,23 +13,20 @@ import logo from "../../images/logo.png";
 const RoomDetail = () => {
   const demo = [
     {
-      key: "1",
       userId: "12345678",
-      userNm: "미미미미미",
+      userNm: "캐릭터1",
       time: "12:22:23",
-      status: false,
+      status: true,
     },
     {
-      key: "1",
       userId: "123345678",
-      userNm: "미미미미미",
+      userNm: "캐릭터2",
       time: "12:22:23",
       status: false,
     },
     {
-      key: "1",
       userId: "1232145678",
-      userNm: "미미미미미",
+      userNm: "캐릭터3",
       time: "12:22:23",
       status: false,
     },
@@ -79,7 +76,7 @@ const RoomDetail = () => {
       debug: function (str) {
         console.log(str);
       },
-      reconnectDelay: 5000,
+      reconnectDelay: 100000,
       heartbeatIncoming: 4000,
       heartbeatOutgoing: 4000,
       onConnect: () => {
@@ -136,12 +133,9 @@ const RoomDetail = () => {
         </div>
       </div>
       <div className="users-time-wrap">
-        {
-          list.map((el) => (
-            <div key={el.userId}>{el.userId}</div>
-          ))
-          // <UserTimer key={el.userId} {...el} />
-        }
+        {list.map((el) => (
+          <UserTimer key={el.userId} {...el} />
+        ))}
       </div>
     </div>
   );

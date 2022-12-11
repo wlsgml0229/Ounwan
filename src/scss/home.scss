@@ -90,4 +90,33 @@
       }
     }
   }
+
+  .users-time-wrap {
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.user-timer {
+  flex: 0 0 33%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .run-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+  .user-name {
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    color: gray;
+  }
+  .time {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+  }
 }
